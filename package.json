@@ -32,6 +32,10 @@
     "email": "markaduncan74@gmail.com",
     "url": "https://github.com/theirongiant"
   },
+  "publishConfig": {
+    "tag": "next",
+    "access": "public"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
