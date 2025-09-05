@@ -56,6 +56,26 @@ module.exports = {
 };
 ```
 
+**JSON Configuration (varro.config.json):**
+```json
+{
+  "mode": "replay",
+  "recordingsDir": "./recordings",
+  "namingPattern": "{method}_{url}_{date}_{counter}",
+  "matching": {
+    "includeQuery": true,
+    "includeHeaders": true,
+    "includeBody": false,
+    "caseSensitive": false
+  },
+  "filters": {
+    "methods": ["GET", "POST"],
+    "urlPatterns": ["*"],
+    "excludePatterns": []
+  }
+}
+```
+
 3. **Run the example server:**
 
 ```bash
