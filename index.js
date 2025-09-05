@@ -27,19 +27,46 @@ class VarroMiddleware {
       }
     };
 
-    // Try to load from varro.config.js or varro.config.json
+    // Try to load from varro.config.js or varro.config.json in project root
     let fileConfig = {};
     try {
-      if (fs.existsSync('./varro.config.js')) {
-        fileConfig = require('./varro.config.js');
-      } else if (fs.existsSync('./varro.config.json')) {
-        fileConfig = JSON.parse(fs.readFileSync('./varro.config.json', 'utf8'));
+      const projectRoot = this.getProjectRoot();
+      const jsConfigPath = path.join(projectRoot, 'varro.config.js');
+      const jsonConfigPath = path.join(projectRoot, 'varro.config.json');
+      
+      if (fs.existsSync(jsConfigPath)) {
+        fileConfig = require(jsConfigPath);
+      } else if (fs.existsSync(jsonConfigPath)) {
+        fileConfig = JSON.parse(fs.readFileSync(jsonConfigPath, 'utf8'));
       }
     } catch (error) {
       console.warn('Warning: Could not load varro config file:', error.message);
     }
 
-    return { ...defaultConfig, ...fileConfig, ...userConfig };
+    const mergedConfig = { ...defaultConfig, ...fileConfig, ...userConfig };
+    
+    // Ensure recordings directory is relative to project root
+    if (!path.isAbsolute(mergedConfig.recordingsDir)) {
+      mergedConfig.recordingsDir = path.join(this.getProjectRoot(), mergedConfig.recordingsDir);
+    }
+    
+    return mergedConfig;
+  }
+
+  getProjectRoot() {
+    // Start from the current working directory (where the app is running)
+    let currentDir = process.cwd();
+    
+    // Walk up the directory tree looking for package.json
+    while (currentDir !== path.dirname(currentDir)) {
+      if (fs.existsSync(path.join(currentDir, 'package.json'))) {
+        return currentDir;
+      }
+      currentDir = path.dirname(currentDir);
+    }
+    
+    // If no package.json found, return the original working directory
+    return process.cwd();
   }
 
   ensureRecordingsDir() {
