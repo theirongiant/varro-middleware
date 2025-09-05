@@ -1,6 +1,6 @@
 {
   "name": "varro-middleware",
-  "version": "0.0.1",
+  "version": "0.1.0-alpha.0",
   "description": "Express middleware for recording and replaying API calls during testing",
   "main": "index.js",
   "files": [

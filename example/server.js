@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const VarroMiddleware = require('../index');
 
 const app = express();
-const port = 3000;
+const port = 3456;
 
 // Middleware setup
 app.use(cors());
