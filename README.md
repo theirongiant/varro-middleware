@@ -41,7 +41,7 @@ app.use(varro.middleware());
 module.exports = {
   mode: 'record',  // 'off', 'record', or 'replay'
   recordingsDir: './recordings',
-  namingPattern: '{verb}_{url}_{timestamp}',
+  namingPattern: '{method}_{url}_{timestamp}',
   matching: {
     includeQuery: true,
     includeHeaders: false,
