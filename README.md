@@ -34,10 +34,10 @@ app.use(varro.middleware());
 // Your API routes...
 ```
 
-2. **Configure Varro** by creating a `varro.config.js` or `varro.config.json` file:
+2. **Configure Varro** by creating a `varro.config.js` or `varro.config.json` file in your project root:
 
+**JavaScript Configuration (varro.config.js):**
 ```javascript
-// varro.config.js
 module.exports = {
   mode: 'record',  // 'off', 'record', or 'replay'
   recordingsDir: './recordings',
@@ -73,7 +73,7 @@ npm run example
 - `'replay'`: Replays recorded responses
 
 ### Recordings Directory
-- `recordingsDir`: Where to store/load recording files (default: `'./recordings'`)
+- `recordingsDir`: Where to store/load recording files relative to project root (default: `'./recordings'`)
 
 ### Naming Pattern
 - `namingPattern`: Template for recording filenames
