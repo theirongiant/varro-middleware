@@ -1,0 +1,57 @@
+{
+  "name": "varro-middleware",
+  "version": "0.0.1",
+  "description": "Express middleware for recording and replaying API calls during testing",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node example/server.js",
+    "example": "node example/server.js",
+    "prepublishOnly": "npm test",
+    "publish:patch": "npm version patch && npm publish",
+    "publish:minor": "npm version minor && npm publish",
+    "publish:major": "npm version major && npm publish"
+  },
+  "keywords": [
+    "express",
+    "middleware",
+    "testing",
+    "api",
+    "recording",
+    "replay",
+    "mock",
+    "http",
+    "requests",
+    "responses"
+  ],
+  "author": {
+    "name": "Mark Duncan",
+    "email": "markaduncan74@gmail.com",
+    "url": "https://github.com/theirongiant"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theirongiant/varro-middleware.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theirongiant/varro-middleware/issues"
+  },
+  "homepage": "https://github.com/theirongiant/varro-middleware#readme",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "peerDependencies": {
+    "express": "^4.0.0"
+  },
+  "devDependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "nodemon": "^3.0.1"
+  }
+}
